@@ -42,13 +42,13 @@ document.getElementById("depositar").onclick = function () {
     DepositarDinero();
 }
 document.getElementById("pagar").onclick = function () {
-    
+
 }
 document.getElementById("transferir").onclick = function () {
-    
+
 }
 document.getElementById("limite").onclick = function () {
-    
+
 }
 
 
@@ -82,18 +82,14 @@ function DepositarDinero() {
     let nuevoDepositoDinero = parseInt(prompt('Cuanto dinero desea depositar: '))
     if (isNaN(nuevoDepositoDinero)) {
         return;
+    } else {
+        let sumaSaldo = (nuevoDepositoDinero) + (saldoCuenta)
+        saldoCuenta = saldoCuenta + nuevoDepositoDinero;
+        alert('Su saldo es de ' + saldoCuenta);
+        actualizarSaldo();
     }
 
-    let sumaSaldo = (nuevoDepositoDinero) + (saldoCuenta)
-
-    saldoCuenta = sumaSaldo;
-    alert('Su saldo es de ' + saldoCuenta)
-    actualizarSaldoEnPantalla()
 }
-
-
-
-
 
 
 // Actualizar Pantallas
