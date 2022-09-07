@@ -39,16 +39,16 @@ document.getElementById("extraer").onclick = function () {
     ExtraerDinero();
 }
 document.getElementById("depositar").onclick = function () {
-    depositarServicio();
+    DepositarDinero();
 }
 document.getElementById("pagar").onclick = function () {
-    cambiarLimiteDeExtraccion();
+    
 }
 document.getElementById("transferir").onclick = function () {
-    cambiarLimiteDeExtraccion();
+    
 }
 document.getElementById("limite").onclick = function () {
-    cambiarLimiteDeExtraccion();
+    
 }
 
 
@@ -57,7 +57,7 @@ document.getElementById("limite").onclick = function () {
 function ExtraerDinero() {
     let ExtraerDinero = prompt("Cuanto dinero desea extraer? ");
     if (ExtraerDinero > limiteExtraccion) {
-        alert("El monto a retirar supera el limite $"+limiteExtraccion);
+        alert("El monto a retirar supera el limite $" + limiteExtraccion);
     } else {
         let saldoActual = saldoCuenta - ExtraerDinero
 
@@ -68,8 +68,39 @@ function ExtraerDinero() {
     }
 }
 
+function cambiarLimiteDeExtraccion() {
+    var nuevoLimiteDeExtraccion = parseInt(prompt("Ingrese el nuevo límite de extracción: "));
+    if (isNaN(nuevoLimiteDeExtraccion)) {
+        return;
+    }
+    limiteExtraccion = nuevoLimiteDeExtraccion;
+    actualizarLimiteEnPantalla();
+    alert("Su nuevo limite de extracción es: " + limiteExtraccion);
+}
+
+function DepositarDinero() {
+    let nuevoDepositoDinero = parseInt(prompt('Cuanto dinero desea depositar: '))
+    if (isNaN(nuevoDepositoDinero)) {
+        return;
+    }
+
+    let sumaSaldo = (nuevoDepositoDinero) + (saldoCuenta)
+
+    saldoCuenta = sumaSaldo;
+    alert('Su saldo es de ' + saldoCuenta)
+    actualizarSaldoEnPantalla()
+}
+
+
+
+
+
+
+// Actualizar Pantallas
 function actualizarSaldo() {
     document.getElementById("saldo-cuenta").innerHTML = "$" + saldoCuenta;
 }
 
-
+function actualizarLimiteEnPantalla() {
+    document.getElementById("limite-extraccion").innerHTML = "Tu límite de extracción es: $" + limiteExtraccion;
+}
